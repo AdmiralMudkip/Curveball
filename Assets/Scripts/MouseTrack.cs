@@ -10,7 +10,7 @@ public class MouseTrack : MonoBehaviour {
         var temp = GameObject.Find("Paddle").GetComponent<Collider>().bounds.size;
 
         offsetX = 5 - temp.x / 2;
-        offsetY = 2.65f - temp.y / 2;
+        offsetY = 2.45f - temp.y / 2;
     }
 
 

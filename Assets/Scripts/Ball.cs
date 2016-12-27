@@ -4,12 +4,14 @@ using System.Collections;
 public class Ball : MonoBehaviour {
 
     bool active = false;
-    float speed = 1f;
+    float speedBase;
+    float speedMultiplier = 1;
     Rigidbody body;
+    Vector3 velocity;
 
 	void Start () {
         body = GetComponent<Rigidbody>();
-
+        velocity = body.velocity;
         
 	}
 	
@@ -20,15 +22,30 @@ public class Ball : MonoBehaviour {
 	    if (!active)
         {
             active = true;
-            body.AddForce(new Vector3(300, 10, 1000));
+            body.AddForce(new Vector3(50, 10, 200));
+            velocity = body.velocity;
+            speedBase = velocity.z;
         }
 	}
 
-    void oncCollisionEnter(Collision col)
+    void OnCollisionEnter(Collision col)
     {
-        if(col.gameObject.tag == "paddle")
+        //if(col.gameObject.tag == "Paddle")
+        //{
+        //GetComponent<Rigidbody>();
+        if (col.gameObject.tag == "Paddle")
         {
-            //rigidbody.transform.
+            
+            //velocity.z = speedBase * speedMultiplier;
+            //body.AddForce(new Vector3(0, 0, -400));
+            //body.velocity.Set(0, 0, 500);
         }
+        
+        //}
+    }
+
+    void OnCollisionExit()
+    {
+        //speedMultiplier += 0.1f;
     }
 }
