@@ -21,11 +21,26 @@ public class MouseTrack : MonoBehaviour {
 
         var pos = transform.position;
         
-        pos.x = (pos.x > offsetX) ? offsetX : pos.x;
-        pos.x = (pos.x < -offsetX) ? -offsetX : pos.x;
+        // gross elseifs but are probably more efficent than a bunch of ternary operators.  
+        // maybe.  if c# isn't smart.
+        if (pos.x > offsetX)
+        {
+            pos.x = offsetX;
+        }
+        else if (pos.x < -offsetX)
+        {
+            pos.x = -offsetX;
+        }
 
-        pos.y = (pos.y > offsetY) ? offsetY : pos.y;
-        pos.y = (pos.y < -offsetY) ? -offsetY : pos.y;
+        if (pos.y > offsetY)
+        {
+            pos.y = offsetY;
+        }
+        else if (pos.y < -offsetY)
+        {
+            pos.y = -offsetY;
+        }
+        
 
         transform.position = pos;
     }
