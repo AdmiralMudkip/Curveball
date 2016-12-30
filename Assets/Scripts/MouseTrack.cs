@@ -4,6 +4,8 @@ using System.Collections;
 public class MouseTrack : MonoBehaviour {
 
     float offsetX, offsetY;
+    Vector3 lastPosition;
+    float speedX, speedY;
 
     void Start()
     {
@@ -43,5 +45,8 @@ public class MouseTrack : MonoBehaviour {
         
 
         transform.position = pos;
+        lastPosition = pos;
+
+
     }
 }
