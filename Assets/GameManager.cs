@@ -18,6 +18,9 @@ public class GameManager : MonoBehaviour {
         
         p1 = new Vector3(0, 0, -4.7f);
         p2 = new Vector3(0, 0, 4.7f);
+
+        player1Turn = Random.value > 0.5; // start on p1 or p2 randomly
+        //placeBall(player1Turn);
 	}
 	
 	// Update is called once per frame
@@ -32,7 +35,7 @@ public class GameManager : MonoBehaviour {
         ball.transform.position = player1 == true ? p1 : p2;
     }
 
-    void updatePlayerScore()
+    public static void updatePlayerScore(int player)
     {
 
     }

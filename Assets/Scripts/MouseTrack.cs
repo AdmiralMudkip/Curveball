@@ -5,7 +5,7 @@ public class MouseTrack : MonoBehaviour {
 
     float offsetX, offsetY;
     Vector3 lastPosition;
-    float speedX, speedY;
+    Vector3 velocity;
 
     void Start()
     {
@@ -14,8 +14,7 @@ public class MouseTrack : MonoBehaviour {
         offsetX = 5 - temp.x / 2;
         offsetY = 2.45f - temp.y / 2;
     }
-
-
+    
 	void Update () {
         Vector3 temp = Input.mousePosition;
         temp.z = 3f;
@@ -43,10 +42,11 @@ public class MouseTrack : MonoBehaviour {
             pos.y = -offsetY;
         }
         
-
         transform.position = pos;
-        lastPosition = pos;
+    }
 
+    void FixedUpdate()
+    {
 
     }
 }
