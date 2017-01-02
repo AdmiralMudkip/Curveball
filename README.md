@@ -1,3 +1,3 @@
 # Curveball
 
-Basically, [http://www.curveball-game.com/](this), but in Unity.
+Basically, [this](http://www.curveball-game.com/), but in Unity.
