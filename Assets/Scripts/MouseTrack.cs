@@ -4,15 +4,15 @@ using System.Collections;
 public class MouseTrack : MonoBehaviour {
 
     float offsetX, offsetY;
-    Vector3 lastPosition;
-    Vector3 velocity;
+    public Vector3 lastPosition;
+    public static Vector3 velocity;
 
     void Start()
     {
-        var temp = GameObject.Find("Paddle").GetComponent<Collider>().bounds.size;
+        //var temp = GameObject.Find("playerOne").GetComponent<Collider>().bounds.size;
 
-        offsetX = 5 - temp.x / 2;
-        offsetY = 2.45f - temp.y / 2;
+        offsetX = 4.3f;
+        offsetY = 1.7f;
     }
     
 	void Update () {
@@ -47,6 +47,7 @@ public class MouseTrack : MonoBehaviour {
 
     void FixedUpdate()
     {
-
+        velocity = lastPosition - transform.position / 0.0111111f;
+        lastPosition = transform.position;
     }
 }
