@@ -12,21 +12,42 @@ public class GameManager : MonoBehaviour {
     public GameObject playerOne, playerTwo;
     bool player1Turn;
     bool bouncing = false;
-    static Vector3 p1, p2;
+    
+    public static Vector3 player1StartPosition, player2StartPosition;
 
-    static int[] playerscores = new int[2];
+
+    static int playerOneScore;
+    static int playerTwoScore;
+
+    private enum GameState {
+        Ready,
+        Playing
+    }
+
+    GameState gameState;
 
 	// Use this for initialization
 	void Start () {
-        //ball = (Ball)GameObject.Find("Sphere").GetComponent("MonoBehavior");
-        //playerOne = GameObject.Find( "playerOne" );
-        //playerTwo = GameObject.Find( "playerTwo" );
 
+        player1StartPosition = new Vector3( 0, 0, 5f );
+        player2StartPosition = new Vector3( 0, 0, -5f );
+                
+        //p1 = new Vector3(0, 0, -4.7f);
+        //p2 = new Vector3(0, 0, 4.7f);
+
+        player1Turn = Random.value > 0.5; 
         
-        p1 = new Vector3(0, 0, -4.7f);
-        p2 = new Vector3(0, 0, 4.7f);
+        if ( player1Turn ) {
+            ball.transform.position = player1StartPosition;
+        }
+        else {
+            ball.transform.position = player2StartPosition;
+        }
 
-        player1Turn = Random.value > 0.5; // start on p1 or p2 randomly
+        ball.StopBall();
+
+        gameState = GameState.Ready;
+        // start on p1 or p2 randomly
         //placeBall(player1Turn);
 	}
 	
@@ -50,16 +71,16 @@ public class GameManager : MonoBehaviour {
         }
     }
 
-    static void placeBall(bool player1)
+    public void placeBall(bool player1)
     {
-        Ball.active = false;
+        ball.StopBall();
 
         //ball.transform.position = player1 == true ? p1 : p2;
     }
 
     public static void updatePlayerScore(int player)
     {
-        playerscores[player - 1]++;
-        placeBall(player == 1);
+        //playerscores[player - 1]++;
+        //placeBall(player == 1);
     }
 }
